@@ -21,3 +21,9 @@
 #### 카프카 설정 
 - 파티션 수 : 병렬처리 가능
 - retention.ms : 카프카 브로커가 저장한 파일이 삭제되기까지 걸리는 시간--> -1은 영원히 삭제 x
+
+| Docker Image Configuration Reference for Confluent Platform
+
+https://docs.confluent.io/platform/current/installation/docker/config-reference.html#confluent-ak-configuration
+
+<img width="2300" height="160" alt="image" src="https://github.com/user-attachments/assets/54460c26-3633-435f-87e1-33816639b87f" />
