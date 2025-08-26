@@ -77,3 +77,8 @@ consumer 실행 :
 
 kafka-console-producer --topic kafka_topic --bootstrap-server localhost:9092 --property "parse.key=true" --property "key.separator=:"
 <img width="1478" height="1254" alt="image" src="https://github.com/user-attachments/assets/a055f3ff-2a67-4662-81ed-a512abc00330" />
+
+
+파티션 늘렸을 때 
+<img width="2732" height="540" alt="image" src="https://github.com/user-attachments/assets/a9a68689-b3fa-42be-98bb-10942fb4c4ec" />
+
