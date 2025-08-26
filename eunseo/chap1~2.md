@@ -27,3 +27,34 @@
 https://docs.confluent.io/platform/current/installation/docker/config-reference.html#confluent-ak-configuration
 
 <img width="2300" height="160" alt="image" src="https://github.com/user-attachments/assets/54460c26-3633-435f-87e1-33816639b87f" />
+
+ 실행 중인 컨테이너 확인 후 직접 접속:
+  | docker ps
+  | docker exec -it <kafka_container_name> bash
+
+  접속 후 토픽 생성:
+  kafka-topics --create --topic kafka_topic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+
+  토픽 목록 확인:
+  kafka-topics --list --bootstrap-server localhost:9092
+
+<img width="1006" height="60" alt="image" src="https://github.com/user-attachments/assets/0a2f4ffa-320d-43c7-8e87-1ffab1ee2ca6" />
+
+producer 실행:
+kafka-console-producer --topic kafka_topic --bootstrap-server localhost:9092
+
+
+consumer 실행 :
+
+처음부터 모든 메시지 읽기:
+ kafka-console-consumer --topic kafka_topic --bootstrap-server localhost:9092 --from-beginning
+
+새로 들어오는 메시지만 읽기:
+ kafka-console-consumer --topic kafka_topic --bootstrap-server localhost:9092
+
+ 특정 파티션에서 읽기:
+ kafka-console-consumer --topic kafka_topic --bootstrap-server localhost:9092 --partition 0
+
+
+
+ —> 옵션 설정한대로(retention.ms) 데이터는 사라지지 않지만 offset이 읽은 만큼 증가함
