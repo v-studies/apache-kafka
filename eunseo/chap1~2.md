@@ -72,5 +72,8 @@ consumer 실행 :
 → 즉, 이전에 키가 0번 파티션에 들어갔다고 해도, 파티션 확장 후에는 동일 키가 반드시 0번으로 간다는 보장이 없다.
 
 
-** 확인하기 
-- key : value 로 넣었을 때 동일 파티션에 들어가는지 확인  
+** 확인
+- key : value 로 넣었을 때 동일 파티션에 들어감 
+
+kafka-console-producer --topic kafka_topic --bootstrap-server localhost:29092 --property "parse.key=true" --property "key.separator=:"
+<img width="1478" height="1254" alt="image" src="https://github.com/user-attachments/assets/a055f3ff-2a67-4662-81ed-a512abc00330" />
