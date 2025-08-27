@@ -82,3 +82,29 @@ kafka-console-producer --topic kafka_topic --bootstrap-server localhost:9092 --p
 파티션 늘렸을 때 
 <img width="2732" height="540" alt="image" src="https://github.com/user-attachments/assets/a9a68689-b3fa-42be-98bb-10942fb4c4ec" />
 
+
+## 컨슈머 그룹 설정 
+파티션 3, 컨슈머 1일 때 
+ --> Consumer가 모든 파티션의 데이터를 다 읽음
+
+ 파티션 3, 컨슈머 3일 때 
+ --> kafka가 파티션을 Consumer들에게 분배 (분배된 파티션의 데이터만 읽음)
+
+ ```
+ kafka_topic_key_value
+├── 파티션 0 → Consumer 1 (터미널 1)
+├── 파티션 1 → Consumer 2 (터미널 2)
+└── 파티션 2 → Consumer 3 (터미널 3)
+```
+
+```
+kafka-console-consumer --topic kafka_topic_key_value --bootstrap-server localhost:9092 \
+  --group group1 \
+  --property "print.key=true" \
+  --property "key.separator=:"
+```
+
+<img width="1364" height="441" alt="image" src="https://github.com/user-attachments/assets/6751b270-88ef-44d7-a955-d0af0922412a" />
+
+<img width="1143" height="255" alt="image" src="https://github.com/user-attachments/assets/46c8bfef-de5b-4cba-a7a4-0d319dd3d17b" />
+
