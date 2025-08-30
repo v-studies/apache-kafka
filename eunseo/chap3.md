@@ -58,6 +58,18 @@
 
 ```
 
+파티션 3, 그룹 컨슈머 멤버 1일 경우
+컨슈머 멤버 1일 파티션 3개 모두 담당
+
+<img width="1359" height="309" alt="image" src="https://github.com/user-attachments/assets/c099b3d8-127c-4d0d-89eb-995c28755c25" />
+
+파티션 3, 그룹 컨슈머 멤버 2일 경우 --> 자동 리밸런싱 
+컨슈머 멤버 1가 파티션 0,1을 담당
+컨슈머 멤버 2가 파티션 2를 담당  
+<img width="1366" height="342" alt="image" src="https://github.com/user-attachments/assets/d568398a-05ed-44ea-8d8d-07ebe819e5c7" />
+
+
+
 ### 토픽 이름 제약 조건
 
 | 예시 
