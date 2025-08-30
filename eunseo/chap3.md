@@ -61,6 +61,7 @@
 ### 토픽 이름 제약 조건
 
 | 예시 
+```
 <환경>.<팀명>.<애플리케이션명>.<메시지타입>
 prd.marketing-team.sms-platform.json
 <프로젝트명>.<서비스명>.<환경>.<이벤트명>
@@ -69,3 +70,4 @@ commerece.payment.prd.notification
 dev.email-sender.jira-1234.email-vo-custom
 <카프카클러스터명>.<환경>.<서비스명>.<메시지타입>
 aws-kafka.live.marketing-platform.json
+```
