@@ -68,6 +68,12 @@
 컨슈머 멤버 2가 파티션 2를 담당  
 <img width="1366" height="342" alt="image" src="https://github.com/user-attachments/assets/d568398a-05ed-44ea-8d8d-07ebe819e5c7" />
 
+파티션 2, 컨슈머 멤버 2 
+
+<img width="395" height="169" alt="image" src="https://github.com/user-attachments/assets/2f2046da-09a6-4894-833d-f9a9b4521804" />
+<img width="1360" height="324" alt="image" src="https://github.com/user-attachments/assets/26dfe631-e73f-4a44-8095-dbbe968f10f7" />
+<img width="1367" height="284" alt="image" src="https://github.com/user-attachments/assets/fb2bfc91-7f8d-4845-8383-ce11463a4526" />
+
 
 
 ### 토픽 이름 제약 조건
