@@ -188,4 +188,10 @@ public class SimpleProducer {
 - Partitioner 구현 +  ProducerConfig의 PARTITIONER_CLASS_CONFIG 옵션으로 지정
 - 토픽의 파티션 수가 변경되더라도 동일 키는 동일 파티션으로 전송할 수 있음 
 
+| 브로커 정상 전송 여부 확인
+```java
+		RecordMetadata recordMetadata = producer.send(record).get();
+		log.info("recordMetadata : {}", recordMetadata);
+```
+<img width="883" height="37" alt="image" src="https://github.com/user-attachments/assets/4b0984f7-496d-4f7d-9810-b8d0193b70f2" />
 
