@@ -96,4 +96,61 @@ aws-kafka.live.marketing-platform.json
 - 오프셋은 직접 지정할 수 없으며, 브로커에 저장될 때 이전에 전송된 레코드의 오프셋+1 값으로 생성된다.
 
 
+### 프로듀서 설정 
+```java
+package com.example.kafka;
+
+import lombok.extern.slf4j.Slf4j;
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.common.serialization.StringSerializer;
+
+import java.util.Properties;
+
+/**
+ * Kafka Producer 예제
+ * 메시지를 Kafka 토픽으로 전송하는 간단한 Producer 구현
+ */
+@Slf4j
+public class SimpleProducer {
+	// 메시지를 전송할 토픽명
+	private final static String TOPIC_NAME = "test";
+	// Kafka 브로커 서버 주소
+	private final static String BOOTSTRAP_SERVERS = "localhost:9092";
+
+	public static void main(String[] args) {
+		// Producer 설정
+		Properties configs = new Properties();
+		configs.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
+		configs.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+		configs.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+
+		// Kafka Producer 생성
+		KafkaProducer<String, String> producer = new KafkaProducer<>(configs);
+
+		// 전송할 메시지 데이터
+		String messageKey = "key1";
+		String messageValue = "testMessage";
+		
+		// ProducerRecord 생성 (토픽, 키, 값)
+		ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC_NAME, messageKey, messageValue);
+		
+		// 메시지 전송
+		producer.send(record);
+		log.info("record : {}", record);
+		
+		// 버퍼에 남은 메시지 즉시 전송
+		producer.flush();
+		
+		// Producer 종료
+		producer.close();
+	}
+}
+```
+
+<img width="1360" height="637" alt="image" src="https://github.com/user-attachments/assets/cd897edd-2d0f-406c-832d-824a48c49cd8" />
+
+<img width="564" height="125" alt="image" src="https://github.com/user-attachments/assets/7309ece7-87b3-495c-82c2-0945d2498812" />
+
 
