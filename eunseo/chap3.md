@@ -154,3 +154,20 @@ public class SimpleProducer {
 <img width="564" height="125" alt="image" src="https://github.com/user-attachments/assets/7309ece7-87b3-495c-82c2-0945d2498812" />
 
 
+| 카프카 파티션 정책
+```
+- Kafka 2.4.0부터 UniformStickyPartitioner가 기본 정책이다. 
+- 배치가 가득 찰 때까지 같은 파티션에 고정하여 네트워크 요청을 줄이므로 RoundRobinPartitioner보다 성능이 좋다.
+- 커스텀 파티션 정책은 Partitioner 인터페이스를 구현하여 사용할 수 있다.
+- 메세지 키가 있을 때는 키의 해시값과 파티션을 매칭하여 전송한다. --> 키가 다양하면 여러 파티션으로 분산되어 배치가 작아질 수 있음 --> UniformStickyPartitioner의 배치 최적화 효과가 제한됨
+```
+
+
+| 프로듀서 설정 필수 옵션
+```
+bootstrap.servers: 프로듀서가 데이터를 전송할 대상 카프카 클러스터에 속한 브로커의 '호스트 이름:포트'를 1개 이상 작성한다. 2개 이상 입력하여 일부 브로커에 이슈가 발생하더라도 접속 이슈가 없게 설정 가능하다.
+key.serializer: 레코드의 메시지 키를 직렬화하는 클래스를 지정한다. 
+value.serializer: 레코드의 메시지 값을 직렬화하는 클래스를 지정한다. 
+```
+
+
