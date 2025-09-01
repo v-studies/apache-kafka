@@ -1,3 +1,13 @@
+# Kafka 셋팅
+## 도커 컴포즈 셋팅
+```shell
+docker-compose -f pollra/docker-compose.yml up -d
+```
+## 접근
+```shell
+docker exec -it pollra-kafka-1 bash
+```
+
 # Obsidian - 지식 관리를 위한 강력한 노트 앱
 
 [Obsidian](https://obsidian.md/)은 마크다운 기반의 강력한 노트 작성 및 지식 관리 도구입니다.
