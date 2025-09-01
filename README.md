@@ -1,11 +1,11 @@
 # Kafka 셋팅
 ## 도커 컴포즈 셋팅
 ```shell
-docker-compose -f pollra/docker-compose.yml up -d
+docker-compose -f apache/docker-compose.yml up -d
 ```
 ## 접근
 ```shell
-docker exec -it pollra-kafka-1 bash
+docker exec -it apache-kafka-1 bash
 ```
 
 # Obsidian - 지식 관리를 위한 강력한 노트 앱
