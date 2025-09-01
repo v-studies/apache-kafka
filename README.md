@@ -5,7 +5,7 @@ docker-compose -f apache/docker-compose.yml up -d
 ```
 ## 접근
 ```shell
-docker exec -it apache-kafka-1 bash
+docker exec -it apache-kafka bash
 ```
 
 # Obsidian - 지식 관리를 위한 강력한 노트 앱
