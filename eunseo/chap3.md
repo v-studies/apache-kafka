@@ -250,3 +250,16 @@ public class SimpleConsumer {
 * key.deserializer: 레코드의 메시지 키를 역직렬화하는 클래스를 지정한다.
 * value.deserializer: 레코드의 메시지 값을 역직렬화하는 클래스를 지정한다.
 ```
+
+
+
+|컨슈머 설정 선택 옵션
+* group.id: 컨슈머 그룹 아이디. 기본값 null.
+* auto.offset.reset: 저장된 오프셋이 없을 때 읽기 시작 위치. latest(최신), earliest(처음), none. 기본값 latest.
+* enable.auto.commit: 자동 커밋 여부. 기본값 true.
+* auto.commit.interval.ms: 자동 커밋 간격. 기본값 5000(5s).
+* max.poll.records: poll()로 반환되는 레코드 개수. 기본값 500.
+* session.timeout.ms: heartbeat 미전송 시 리밸런싱 기준 시간. 기본값 10000(10s).
+* heartbeat.interval.ms: heartbeat 전송 간격. 기본값 3000(3s).
+* max.poll.interval.ms: poll() 호출 간격 최대 시간. 초과 시 리밸런싱. 기본값 300000(5m).
+* isolation.level: 트랜잭션 레코드 읽기 수준. read_committed/read_uncommitted. 기본값 read_uncommitted.
