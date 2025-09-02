@@ -195,3 +195,58 @@ public class SimpleProducer {
 ```
 <img width="883" height="37" alt="image" src="https://github.com/user-attachments/assets/4b0984f7-496d-4f7d-9810-b8d0193b70f2" />
 
+
+### 컨슈머 설정
+```java
+package com.example.kafka;
+
+import java.time.Duration;
+import java.util.List;
+import java.util.Properties;
+
+import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.clients.consumer.ConsumerRecords;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.common.serialization.StringDeserializer;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+public class SimpleConsumer {
+	private final static String TOPIC_NAME = "test";
+	private final static String BOOTSTRAP_SERVERS = "localhost:9092";
+
+	public static void main(String[] args) {
+		Properties configs = new Properties();
+		configs.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
+		configs.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
+		configs.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
+		configs.put(ConsumerConfig.GROUP_ID_CONFIG, "test-group");
+		configs.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
+
+		KafkaConsumer<String, String> consumer = new KafkaConsumer<>(configs);
+		consumer.subscribe(List.of(TOPIC_NAME));
+
+		while (true) {
+			ConsumerRecords<String, String> records = consumer.poll(Duration.ofSeconds(1));
+			for (ConsumerRecord<String, String> record : records) {
+				log.info("record : {}", record);
+			}
+		}
+	  }
+	}
+
+```
+- 3개 파티션 토픽은 최대 3개 컨슈머로 처리해야 한다. (4개 컨슈머를 사용하면 1개는 유휴 상태가 된다.)
+- 리밸런싱은 컨슈머가 추가되는 상황에, 컨슈머가 제외되는 상황에 일어난다. 
+- 컨슈머는 카프카 브로커로부터 데이터를 어디까지 가져갔는지 commit을 통해 기록한다. 특정 토픽의 파티션을 어떤 컨슈머 그룹이 몇 번째 가져갔는지 카프카 브로커 내부에서 사용되는 내부 토픽(__consumer_offsets)에 기록된다.
+
+
+
+| 컨슈머 설정 필수 옵션
+```
+* bootstrap.servers: 브로커 호스트 이름:포트 1개 이상. 2개 이상 입력해 일부 브로커에 이슈가 발생하더라도 접속에 이슈가 없도록 설정 가능하다.
+* key.deserializer: 레코드의 메시지 키를 역직렬화하는 클래스를 지정한다.
+* value.deserializer: 레코드의 메시지 값을 역직렬화하는 클래스를 지정한다.
+```
