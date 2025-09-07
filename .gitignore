@@ -1,3 +1,8 @@
 /.idea/
 /.obsidian/
 /.claude/
+
+# pollra
+/pollra/example-kafka-project/.gradle/
+/pollra/example-kafka-project/example-kafka-project.iml
+/pollra/example-kafka-project/.idea/
