@@ -8,6 +8,18 @@ docker-compose -f apache/docker-compose.yml up -d
 docker exec -it apache-kafka bash
 ```
 
+# AKHQ - 카프카 클러스터 관리 툴
+
+[AKHQ](https://akhq.io/)는 카프카 클러스터를 시각적으로 관리하고 모니터링할 수 있는 오픈 소스 웹 애플리케이션입니다.
+## 도커 컴포즈 셋팅
+```shell
+docker-compose -f apache/akhq/docker-compose.yml up -d
+```
+
+## 접근
+
+웹 브라우저에서 http://localhost:8080 접속
+
 # Obsidian - 지식 관리를 위한 강력한 노트 앱
 
 [Obsidian](https://obsidian.md/)은 마크다운 기반의 강력한 노트 작성 및 지식 관리 도구입니다.
