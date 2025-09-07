@@ -263,3 +263,11 @@ public class SimpleConsumer {
 * heartbeat.interval.ms: heartbeat 전송 간격. 기본값 3000(3s).
 * max.poll.interval.ms: poll() 호출 간격 최대 시간. 초과 시 리밸런싱. 기본값 300000(5m).
 * isolation.level: 트랜잭션 레코드 읽기 수준. read_committed/read_uncommitted. 기본값 read_uncommitted.
+* 
+
+스트림즈
+- 카프카 스트림즈는 토픽에 적재된 데이터를 stateful 또는 stateless으로 실시간 변환하여 다른 토픽에 적재하는 라이브러리이다
+- A 토픽에 들어오는 데이터를 필터링하여 B 토픽에 적재할 수 있다. 
+- ktable 과 Kstream을 조인한 데이터를 다른 토픽에 적재할 수 있다.
+
+
