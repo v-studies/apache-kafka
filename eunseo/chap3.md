@@ -74,6 +74,19 @@
 <img width="1360" height="324" alt="image" src="https://github.com/user-attachments/assets/26dfe631-e73f-4a44-8095-dbbe968f10f7" />
 <img width="1367" height="284" alt="image" src="https://github.com/user-attachments/assets/fb2bfc91-7f8d-4845-8383-ce11463a4526" />
 
+<img width="1437" height="618" alt="image" src="https://github.com/user-attachments/assets/a06699a5-9c58-4671-ae39-22febb6afed1" />
+
+그룹을 지정하지 않을 시, Kafka는 자동으로 고유한 그룹 ID를 생성합니다:
+
+보통 console-consumer-12345 형태
+
+실제 동작 (자동 생성된 그룹으로 오프셋 관리)
+
+파티션 0의 메시지 "Hello" → A, B, C 모두 읽음
+
+각 그룹이 독립적으로 모든 데이터를 처리
+
+# 자동으로 console-consumer-12345 같은 그룹 생성됨
 
 
 ### 토픽 이름 제약 조건
