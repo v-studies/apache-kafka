@@ -31,8 +31,7 @@ unclean.leader.election.enable 옵션
  
 
 ## 프로듀서 
-4.2.1
-- acks 옵션
+#### 4.2.1 acks 옵션
 ```
 acks=0
 프로듀서가 리더 파티션으로 데이터를 전송하고 데이터 저장 여부를 응답 값으로 받지 않는다.
@@ -51,7 +50,17 @@ min.insync.replicas: 프로듀서가 데이터 적재를 확인할 최소 ISR �
 최소 2로 설정해야 all로 설정하는 의미가 있다.
 브로커 개수 미만으로 꼭 설정하도록 한다.
  ```
-####  가장 안정적인 설정 방법
+
+가장 안정적인 설정 방법
 - 토픽 복제 개수 = 3
 - min.insync.replicas = 2
 - acks = all
+
+#### 4.2.2 멱등성 프로듀서
+- enable.idempotence 옵션 = true --> 데이터를 브로커에 전달할 때 PID(Producer unique ID)와 시퀀스 넘버를 함께 전달  -> PID와 시퀀스 넘버 확인하여 동일한 메세지는 적재하지 않는다.
+- 애플리케이션을 재시작하면 PID가 달라진다.
+- 정확히 한번 적재하기 위해서는 retries = Integer.MAX_VALUE 설정, acks = all로 설정된다
+
+#### 4.2.3 트랜잭션 프로듀서
+- 다수의 파티션에 데이터를 저장할 경우 모든 데이터에 대해 동일한 원자성을 만족시키기 위해 사용
+- enable.idempotence = true, transactional.id를 임의의 String값으로 정의, 컨슈머 isolation.level = read_committed로 설정할 경우 컨슈머는 트랜잭션으로 처리 완료된 데이터만 쓰고 읽게 된다. 
