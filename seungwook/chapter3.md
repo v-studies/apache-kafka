@@ -175,11 +175,37 @@ KStream<String, String> orderStream = builder.stream(ORDER_STREAM);
 
 
 
+### 헷갈렸던 내용
 
+#### 컨슈머 그룹 관련 파티션 읽을때
+- 그룹 내: 파티션 1개는 최대 1개의 컨슈머에만 할당 (중복 없음).
+- 그룹 간: 서로 다른 그룹이라면 파티션 제한 없이 동시에 읽기 가능 (중복 소비).
+  - 그룹지정 안한것도 포함
 
+#### kafka Exactly-once 보장하는방법
 
+1) 일반 프로듀서/컨슈머로 EOS 구현
 
+- 프로듀서
+  - enable.idempotence=true
+  - transactional.id=your-tx-id ← 트랜잭션 프로듀서 활성화 핵심
+  - (암묵적으로) acks=all, retries>0, max.in.flight.requests.per.connection<=5 적용/권장
 
+- 컨슈머
+  - isolation.level=read_committed ← 커밋된 레코드만 읽음
+  - enable.auto.commit=false 권장 (오프셋은 프로듀서 트랜잭션에 포함)
+
+- 코드 흐름
+  1. producer.beginTransaction()
+  2. 레코드 처리 후 결과 producer.send(...)
+  3. producer.sendOffsetsToTransaction(currentOffsets, groupMeta) ← 읽은 위치를 같은 트랜잭션에 포함
+  4. producer.commitTransaction()
+
+2) Kafka Streams 사용 시(가장 간단)
+```java
+processing.guarantee=exactly_once_v2
+```
+- 내부적으로 멱등성 + 트랜잭션 + 오프셋 동시 커밋을 자동으로 처리합니다.
 
 
 
