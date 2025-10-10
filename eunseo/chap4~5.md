@@ -60,3 +60,26 @@ acks vs ackMode
 ** enable.auto.commit=true --> 카프카 컨슈머가 일정 주기로 메시지 오프셋을 자동으로 커밋하기 때문에, AckMode 설정은 무시
 - 자동 커밋 활성화
 - 일정 간격(auto.commit.interval.ms)마다 자동으로 offset 커밋
+
+
+##### 4.4.2.1 레코드 리스터 
+```java
+     // poll()이 호출되어 가져온 레코드들은 차례대로 개별 레코드의 메시지 값을 파라미터로 받게 된다. 
+	@KafkaListener(topics = "test", groupId = "test-group-00")
+	public void recordLister(ConsumerRecord<String,String> record){
+		log.info("record : {}", record.toString());
+	}
+
+    // 역직렬화 클래스 기본값인 StringDeserializer로 String 메세지 값을 전달 받게 된다. 
+	@KafkaListener(topics = "test", groupId = "test-group-01")
+	public void singleTopicListener(String messageValue){
+		log.info("messageValue : {}", messageValue);
+	}
+
+```
+
+- 2개 이상의 카프카 컨슈머 스레드를 실행하고 싶다면 concurrency 옵션 사용
+- 특정 토픽의 특정 파티션만 구독하고 싶다면 topicPartitions 파라미터 사용
+
+##### 4.4.2.2 배치 리스너
+
