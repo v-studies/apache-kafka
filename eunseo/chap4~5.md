@@ -57,6 +57,6 @@ acks vs ackMode
 2. ackMode (Consumer 설정) --> 수동 커밋 설정
 - Kafka Consumer (특히 Spring Kafka)에서 사용하는 설정으로, Consumer가 메시지를 처리한 후 언제 offset을 커밋할지 결정
 
-** enable.auto.commit=true 
+** enable.auto.commit=true --> 카프카 컨슈머가 일정 주기로 메시지 오프셋을 자동으로 커밋하기 때문에, AckMode 설정은 무시
 - 자동 커밋 활성화
 - 일정 간격(auto.commit.interval.ms)마다 자동으로 offset 커밋
