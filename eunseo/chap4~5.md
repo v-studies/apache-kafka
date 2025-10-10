@@ -54,7 +54,7 @@ acks vs ackMode
 1. acks (Producer 설정)
 - Kafka Producer에서 사용하는 설정으로, 메시지를 보낸 후 브로커로부터 어떤 수준의 확인을 받을지 결정
 
-2. ackMode (Consumer 설정)
+2. ackMode (Consumer 설정) --> 수동 커밋 설정
 - Kafka Consumer (특히 Spring Kafka)에서 사용하는 설정으로, Consumer가 메시지를 처리한 후 언제 offset을 커밋할지 결정
 
 ** enable.auto.commit=true 
