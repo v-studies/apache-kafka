@@ -82,4 +82,13 @@ acks vs ackMode
 - 특정 토픽의 특정 파티션만 구독하고 싶다면 topicPartitions 파라미터 사용
 
 ##### 4.4.2.2 배치 리스너
+```java
+	@KafkaListener(topics = "test", groupId = "test-group-02")
+	public void consumerCommitListener(List<ConsumerRecord<String, String>> records){
+		records.forEach(record -> log.info("record : {}", record));
+	}
+```
+** 배치 리스너 활성화 필요 
+
+<img width="515" height="28" alt="image" src="https://github.com/user-attachments/assets/9e15677a-8c15-4c29-87d1-1a693194608b" />
 
