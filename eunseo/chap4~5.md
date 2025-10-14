@@ -92,3 +92,7 @@ acks vs ackMode
 
 <img width="515" height="28" alt="image" src="https://github.com/user-attachments/assets/9e15677a-8c15-4c29-87d1-1a693194608b" />
 
+### 카프카 실전 프로젝트
+
+##### 데이터 포맷
+- JSON은 String으로 선언되어 스키마의 변경에 유연하게 대처할 수 있다. 
