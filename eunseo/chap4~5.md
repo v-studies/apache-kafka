@@ -95,4 +95,8 @@ acks vs ackMode
 ### 카프카 실전 프로젝트
 
 ##### 데이터 포맷
-- JSON은 String으로 선언되어 스키마의 변경에 유연하게 대처할 수 있다. 
+- JSON은 String으로 선언되어 스키마의 변경에 유연하게 대처할 수 있다.
+
+##### 프로듀서
+- akcs = 1 -> 최소한 리더 파티션에는 데이터 적재 -> min.insync.replicas 최소 동기화 리플리카 설정은 리더 파티션에 지속 적재하므로  acks =1 일 경우 무시된다. ack를 all로 설정할 경우에만 min.insync.replicas 설정이 유효하다.
+
