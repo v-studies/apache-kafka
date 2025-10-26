@@ -121,3 +121,8 @@ acks vs ackMode
 <img width="1968" height="529" alt="image" src="https://github.com/user-attachments/assets/84238038-300d-42ff-9f50-a3f6734a51fe" />
 
 
+실습
+<img width="1283" height="464" alt="image" src="https://github.com/user-attachments/assets/0ec76563-6d2e-4f76-85b1-1853069083a6" />
+
+
+<img width="375" height="126" alt="image" src="https://github.com/user-attachments/assets/84b25d6d-edde-4816-9e42-1acbee65bf19" />
