@@ -126,3 +126,18 @@ acks vs ackMode
 
 
 <img width="375" height="126" alt="image" src="https://github.com/user-attachments/assets/84b25d6d-edde-4816-9e42-1acbee65bf19" />
+
+##### 5.1.5 상용 인프라 아키텍처
+웹 이벤트 수집 파이프라인 
+- L4 로드밸런서
+- 프로듀서 2개 이상의 서버 
+- 컨슈머 2개 이상의 서버
+- 커넥트 2개 이상의 서버
+
+웹 이벤트 데이터 증가 시 스케일 아웃 요소 
+- 파티션 개수
+- 컨슈머 스래드 개수
+- 커넥트 태스크 개수
+
+
+
