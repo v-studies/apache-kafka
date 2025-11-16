@@ -10,3 +10,5 @@
 - 보안 설정
 
 
+#### Confluent Kafka Cloud
+- SASL 설정 필요 (보안) 
